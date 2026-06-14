@@ -28,12 +28,15 @@ export default function Home() {
       
       {/* 1. CUSTOM INTERACTIVE CURSOR */}
       <div 
-        className="hidden md:block fixed top-0 left-0 w-8 h-8 rounded-full border border-zinc-500 pointer-events-none z-50 mix-blend-difference transition-transform duration-100 ease-out -translate-x-1/2 -translate-y-1/2"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-50 rounded-full transition-transform duration-700 ease-out -translate-x-1/2 -translate-y-1/2"
         style={{
           left: `${mousePos.x}px`,
           top: `${mousePos.y}px`,
-          transform: `translate(-50%, -50%) scale(${isHovered ? 2 : 1})`,
-          borderColor: isHovered ? "#34d399" : "#71717a"
+          width: isHovered ? '48px' : '24px',
+          height: isHovered ? '48px' : '24px',
+          backgroundColor: isHovered ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
+          border: isHovered ? '2px solid #10b981' : '1px solid #71717a',
+          boxShadow: isHovered ? '0 0 15px rgba(16, 185, 129, 0.4)' : 'none',
         }}
       />
 
