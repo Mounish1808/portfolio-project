@@ -232,40 +232,41 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Project Card 2: Student Management */}
-          <div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between"
-          >
-            <div className="space-y-5">
-              <div className="flex justify-between items-center">
-                <div className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.15em] text-zinc-600 font-bold uppercase">
-                  <span className="w-1 h-1 rounded-full bg-blue-500" />
-                  AUTOMATION_CORE
-                </div>
-                <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                  <a href="https://github.com/Mounish1808" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  </a>
-                  <a href="#" className="hover:text-white transition-colors"><ExternalLink size={14} /></a>
-                </div>
-              </div>
-              <h3 className="text-lg font-black tracking-tight text-white group-hover:text-blue-400 transition-colors duration-500">
-                Student Management Matrix
-              </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed font-sans font-light">
-                An internal organizational application built in Python to parse and categorize complex academic metrics records. Built using explicit Object-Oriented design loops and deterministic relational file processing routines.
-              </p>
-            </div>
-            <div className="pt-8 flex flex-wrap gap-1.5">
-              {["Python", "OOP Logic", "Relational Data", "Sorting"].map((tag) => (
-                <span key={tag} className="text-[9px] font-bold tracking-wider bg-zinc-950/80 text-zinc-500 px-2.5 py-1 rounded border border-zinc-900/60 group-hover:border-zinc-800 transition-colors">{tag}</span>
-              ))}
-            </div>
-          </div>
-
-        </div>
+          {/* Project Card 2: Student Management System */}
+<div 
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+  className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between"
+>
+  <div className="space-y-5">
+    <div className="flex justify-between items-center">
+      <div className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.15em] text-zinc-600 font-bold uppercase">
+        <span className="w-1 h-1 rounded-full bg-blue-500" />
+        AUTOMATION_CORE
+      </div>
+      <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
+        <a href="https://github.com/Mounish1808/Student-Management-System" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+          <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://github.com/Mounish1808/Student-Management-System" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+          <ExternalLink size={14} />
+        </a>
+      </div>
+    </div>
+    {/* UPDATED TITLE HERE */}
+    <h3 className="text-lg font-black tracking-tight text-white group-hover:text-blue-400 transition-colors duration-500">
+      Student Management System
+    </h3>
+    <p className="text-xs text-zinc-400 leading-relaxed font-sans font-light">
+      An internal organizational application built in Python to parse and categorize complex academic metrics records. Built using explicit Object-Oriented design loops and deterministic relational file processing routines.
+    </p>
+  </div>
+  <div className="pt-8 flex flex-wrap gap-1.5">
+    {["Python", "OOP Logic", "Relational Data", "Sorting"].map((tag) => (
+      <span key={tag} className="text-[9px] font-bold tracking-wider bg-zinc-950/80 text-zinc-500 px-2.5 py-1 rounded border border-zinc-900/60 group-hover:border-zinc-800 transition-colors">{tag}</span>
+    ))}
+  </div>
+</div>
       </section>
 
       {/* SECTION 03: COMMUNICATIONS LINK */}
