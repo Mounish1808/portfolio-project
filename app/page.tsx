@@ -157,10 +157,10 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { tag: "METRIC_01", title: "Projects Launched", val: "10+", desc: "Full-stack structures and automated deployment chains." },
-            { tag: "METRIC_02", title: "Algorithmic Solutions", val: "250+", desc: "Data structures and core processing checkpoint sequences." },
-            { tag: "METRIC_03", title: "Core Frameworks", val: "04+", desc: "Optimized operational knowledge in C++, Python, TS & SQL." },
-            { tag: "METRIC_04", title: "Academic Matrix", val: "3rd Year", desc: "Focusing on relational database design and OS logic paths." },
+            { tag: "METRIC_01", title: "Projects Launched", val: "10+", desc: "Full-stack structures and automated deployment chains.", icon: Code },
+            { tag: "METRIC_02", title: "Algorithmic Solutions", val: "250+", desc: "Data structures and core processing checkpoint sequences.", icon: Layers },
+            { tag: "METRIC_03", title: "Core Frameworks", val: "04+", desc: "Optimized operational knowledge in C++, Python, TS & SQL.", icon: Cpu },
+            { tag: "METRIC_04", title: "Academic Matrix", val: "3rd Year", desc: "Focusing on relational database design and OS logic paths.", icon: Award },
           ].map((item, idx) => (
             <div 
               key={idx}
@@ -171,6 +171,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between text-zinc-600 group-hover:text-zinc-400 transition-colors">
                   <span className="text-[9px] tracking-widest font-bold">{item.tag}</span>
+                  <item.icon size={14} strokeWidth={1.5} />
                 </div>
                 <div className="space-y-1">
                   <div className="text-3xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-300">{item.val}</div>
@@ -211,7 +212,7 @@ export default function Home() {
                   DECENTRALIZED_NODE
                 </div>
                 <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://github.com/Mounish1808" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                   </a>
                   <a href="#" className="hover:text-white transition-colors"><ExternalLink size={14} /></a>
@@ -244,7 +245,7 @@ export default function Home() {
                   AUTOMATION_CORE
                 </div>
                 <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://github.com/Mounish1808" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                   </a>
                   <a href="#" className="hover:text-white transition-colors"><ExternalLink size={14} /></a>
@@ -285,8 +286,9 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             
+            {/* EMAIL SOURCE */}
             <a 
-              href="mailto:vrmounish@example.com" 
+              href="mailto:vrmounishreddy@gmail.com" 
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="flex items-center justify-between px-4 py-3.5 border border-zinc-900 rounded bg-zinc-950/60 hover:border-emerald-500 transition-all duration-300 text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white"
@@ -298,8 +300,9 @@ export default function Home() {
               <ChevronRight size={10} className="text-zinc-700" />
             </a>
 
+            {/* LINKEDIN SOURCE */}
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/vr-mounish-reddy-5a54bb376/" 
               target="_blank" 
               rel="noopener noreferrer"
               onMouseEnter={() => setIsHovered(true)}
@@ -313,8 +316,9 @@ export default function Home() {
               <ChevronRight size={10} className="text-zinc-700" />
             </a>
 
+            {/* GITHUB SOURCE */}
             <a 
-              href="https://github.com" 
+              href="https://github.com/Mounish1808" 
               target="_blank" 
               rel="noopener noreferrer"
               onMouseEnter={() => setIsHovered(true)}
