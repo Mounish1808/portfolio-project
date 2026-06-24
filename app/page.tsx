@@ -11,7 +11,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  // REACTIVATED: Coordinates tracking engine
+  // Core Mouse Tracking Setup
   useEffect(() => {
     setMounted(true);
     
@@ -19,23 +19,21 @@ export default function Home() {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
-    // Tracks user movement across the entire website viewport
-    document.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => document.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Prevent layout shifts during build hydration phases
   if (!mounted) return <div className="bg-[#050505] min-h-screen" />;
 
   return (
-    /* cursor-none hides the PC arrow cursor so only the circle is visible */
+    /* cursor-none ensures the native PC cursor stays invisible everywhere */
     <div className="bg-[#050505] text-zinc-100 font-mono selection:bg-zinc-800 selection:text-white min-h-screen relative overflow-x-hidden antialiased cursor-none">
       
-      {/* 1. CUSTOM TRACKING CIRCLE CURSOR */}
+      {/* THE ONLY CUSTOM CIRCLE CURSOR */}
       <div 
         style={{
           position: 'fixed',
@@ -54,17 +52,16 @@ export default function Home() {
         }}
       />
 
-      {/* 2. GLOBAL READING PROGRESS MATRIX */}
+      {/* GLOBAL READING PROGRESS MATRIX */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 via-zinc-500 to-blue-500 transform-origin-0 z-50" style={{ scaleX }} />
 
-      {/* 3. STRUCTURAL GRID BACKGROUND & VIGNETTE */}
+      {/* STRUCTURAL GRID BACKGROUND & VIGNETTE */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#141416_1px,transparent_1px),linear-gradient(to_bottom,#141416_1px,transparent_1px)] bg-[size:5rem_5rem] pointer-events-none z-0" />
       <div className="fixed inset-0 bg-radial-gradient from-transparent via-[#050505]/60 to-[#050505] pointer-events-none z-0" />
 
       {/* SECTION 00: THE HERO HUB */}
       <main className="flex min-h-screen flex-col items-center justify-center p-6 relative border-b border-zinc-900/60 z-10">
         
-        {/* Upper Status Frame */}
         <div className="absolute top-8 left-8 right-8 flex justify-between text-[9px] tracking-[0.2em] text-zinc-500 uppercase">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
@@ -74,10 +71,8 @@ export default function Home() {
           <div>CORE_V.26 // PRODUCTION</div>
         </div>
 
-        {/* Center Blueprint Window */}
         <div className="text-center space-y-10 max-w-2xl relative">
           
-          {/* Animated Command Terminal Label */}
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,7 +89,6 @@ export default function Home() {
             </motion.span>
           </motion.div>
 
-          {/* Luxury-tech Typographic Header */}
           <div className="space-y-4">
             <p className="text-[11px] tracking-[0.3em] text-zinc-500 uppercase font-medium">COMPUTER SCIENCE ENGINEER</p>
             <motion.h1 
@@ -107,7 +101,6 @@ export default function Home() {
             </motion.h1>
           </div>
 
-          {/* Context Explainer Block */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -123,7 +116,6 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Interactive Call-to-Action */}
           <div className="pt-4">
             <button 
               onClick={() => scrollToSection("stats-section")}
@@ -137,7 +129,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Lower Absolute Meta Footer */}
         <div className="absolute bottom-8 left-8 right-8 flex justify-between text-[9px] tracking-[0.15em] text-zinc-600">
           <div>LOC // COIMBATORE, IN</div>
           <div className="hidden sm:block font-sans">NEXT.JS FRAMEWORK v16 // TW_V4</div>
@@ -200,7 +191,6 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          {/* Project Card 1: Blockchain */}
           <div 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -233,7 +223,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Project Card 2: Student Management System */}
           <div 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -289,7 +278,6 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             
-            {/* EMAIL SOURCE */}
             <a 
               href="mailto:vrmounishreddy@gmail.com" 
               onMouseEnter={() => setIsHovered(true)}
@@ -303,7 +291,6 @@ export default function Home() {
               <ChevronRight size={10} className="text-zinc-700" />
             </a>
 
-            {/* LINKEDIN SOURCE */}
             <a 
               href="https://www.linkedin.com/in/vr-mounish-reddy-5a54bb376/" 
               target="_blank" 
@@ -319,7 +306,6 @@ export default function Home() {
               <ChevronRight size={10} className="text-zinc-700" />
             </a>
 
-            {/* GITHUB SOURCE */}
             <a 
               href="https://github.com/Mounish1808" 
               target="_blank" 
@@ -338,7 +324,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Global Copyright Tag line */}
         <div className="pt-20 text-center text-[9px] text-zinc-700 uppercase tracking-[0.3em]">
           © {new Date().getFullYear()} VR MOUNISH REDDY // SYSTEM_LOG_SECURE
         </div>
