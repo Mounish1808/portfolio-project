@@ -5,23 +5,12 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { ArrowDown, Code, Cpu, Award, Layers, ExternalLink, Mail, Terminal, ChevronRight } from "lucide-react";
 
 export default function Home() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  // Explicit tracking engine setup
   useEffect(() => {
     setMounted(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
-    // Force pointer activation across the entire global document frame
-    document.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -34,29 +23,10 @@ export default function Home() {
   return (
     <div className="bg-[#050505] text-zinc-100 font-mono selection:bg-zinc-800 selection:text-white min-h-screen relative overflow-x-hidden antialiased">
       
-      {/* 1. ABSOLUTE HIGH-GLOW GLIDE POINTER */}
-      <div 
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) translate(-50%, -50%)`,
-          width: isHovered ? '50px' : '16px',
-          height: isHovered ? '50px' : '16px',
-          backgroundColor: isHovered ? 'rgba(52, 211, 153, 0.2)' : 'rgba(255, 255, 255, 0.1)',
-          border: isHovered ? '2px solid #34d399' : '1px solid rgba(255, 255, 255, 0.5)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 99999,
-          transition: 'width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.15s, border-color 0.15s',
-          boxShadow: isHovered ? '0 0 20px rgba(52, 211, 153, 0.6)' : '0 0 8px rgba(255,255,255,0.1)',
-        }}
-      />
-
-      {/* 2. GLOBAL READING PROGRESS MATRIX */}
+      {/* GLOBAL READING PROGRESS MATRIX */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 via-zinc-500 to-blue-500 transform-origin-0 z-50" style={{ scaleX }} />
 
-      {/* 3. STRUCTURAL GRID BACKGROUND & VIGNETTE */}
+      {/* STRUCTURAL GRID BACKGROUND & VIGNETTE */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#141416_1px,transparent_1px),linear-gradient(to_bottom,#141416_1px,transparent_1px)] bg-[size:5rem_5rem] pointer-events-none z-0" />
       <div className="fixed inset-0 bg-radial-gradient from-transparent via-[#050505]/60 to-[#050505] pointer-events-none z-0" />
 
@@ -126,8 +96,6 @@ export default function Home() {
           <div className="pt-4">
             <button 
               onClick={() => scrollToSection("stats-section")}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="group flex items-center gap-3 mx-auto px-5 py-2.5 border border-zinc-800 rounded text-[10px] font-bold tracking-[0.2em] text-zinc-400 hover:text-white hover:border-zinc-400 transition-all duration-500 bg-zinc-950/40 backdrop-blur-md"
             >
               ACCESS TELEMETRY DATA
@@ -164,8 +132,6 @@ export default function Home() {
           ].map((item, idx) => (
             <div 
               key={idx}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="border border-zinc-900 bg-[#09090b]/40 backdrop-blur-sm p-6 rounded relative group hover:border-zinc-700 transition-all duration-500 flex flex-col justify-between"
             >
               <div className="space-y-4">
@@ -200,11 +166,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Project Card 1: Blockchain */}
-          <div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between"
-          >
+          <div className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between">
             <div className="space-y-5">
               <div className="flex justify-between items-center">
                 <div className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.15em] text-zinc-600 font-bold uppercase">
@@ -233,11 +195,7 @@ export default function Home() {
           </div>
 
           {/* Project Card 2: Student Management System */}
-          <div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between"
-          >
+          <div className="group border border-zinc-900 bg-[#09090b]/20 p-8 rounded relative hover:bg-zinc-950/60 hover:border-zinc-700/80 transition-all duration-500 flex flex-col justify-between">
             <div className="space-y-5">
               <div className="flex justify-between items-center">
                 <div className="inline-flex items-center gap-1.5 text-[9px] tracking-[0.15em] text-zinc-600 font-bold uppercase">
@@ -291,8 +249,6 @@ export default function Home() {
             {/* EMAIL SOURCE */}
             <a 
               href="mailto:vrmounishreddy@gmail.com" 
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="flex items-center justify-between px-4 py-3.5 border border-zinc-900 rounded bg-zinc-950/60 hover:border-emerald-500 transition-all duration-300 text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white"
             >
               <div className="flex items-center gap-2.5">
@@ -307,8 +263,6 @@ export default function Home() {
               href="https://www.linkedin.com/in/vr-mounish-reddy-5a54bb376/" 
               target="_blank" 
               rel="noopener noreferrer"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="flex items-center justify-between px-4 py-3.5 border border-zinc-900 rounded bg-zinc-950/60 hover:border-emerald-500 transition-all duration-300 text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white"
             >
               <div className="flex items-center gap-2.5">
@@ -323,8 +277,6 @@ export default function Home() {
               href="https://github.com/Mounish1808" 
               target="_blank" 
               rel="noopener noreferrer"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="flex items-center justify-between px-4 py-3.5 border border-zinc-900 rounded bg-zinc-950/60 hover:border-emerald-500 transition-all duration-300 text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white"
             >
               <div className="flex items-center gap-2.5">
