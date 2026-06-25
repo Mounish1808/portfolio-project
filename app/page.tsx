@@ -9,7 +9,6 @@ export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const [mounted, setMounted] = useState(false);
   
-  // Loading state engine
   const [loading, setLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [bootLog, setBootLog] = useState("INITIALIZING CORE... [0x00000]");
@@ -17,7 +16,6 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  // Mouse tracking logic
   useEffect(() => {
     setMounted(true);
     
@@ -29,7 +27,6 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // System Boot Animation Progression Loop
   useEffect(() => {
     if (!mounted) return;
 
@@ -45,15 +42,14 @@ export default function Home() {
       setLoadingProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => setLoading(false), 600); // Smooth hold frame before drop-away
+          setTimeout(() => setLoading(false), 600);
           return 100;
         }
         
-        // Dynamic logs changing along with progress percentage
         const logIndex = Math.min(Math.floor(prev / 20), logs.length - 1);
         setBootLog(logs[logIndex]);
         
-        return prev + Math.floor(Math.random() * 8) + 4; // Organic loading speeds
+        return prev + Math.floor(Math.random() * 8) + 4;
       });
     }, 80);
 
@@ -69,7 +65,7 @@ export default function Home() {
   return (
     <div className="bg-[#050505] text-zinc-100 font-mono selection:bg-zinc-800 selection:text-white min-h-screen relative overflow-x-hidden antialiased cursor-none">
       
-      {/* INITIALIZATION ENTRY SEQUENCE CONTAINER */}
+      {/* BOOT ANIMATION CONTAINER */}
       <AnimatePresence mode="wait">
         {loading && (
           <motion.div
@@ -82,24 +78,20 @@ export default function Home() {
             }}
             className="fixed inset-0 bg-[#050505] z-[999999] flex flex-col items-center justify-center p-6 cursor-wait"
           >
-            {/* Ambient Background Matrix Elements for the loader */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#141416_1px,transparent_1px),linear-gradient(to_bottom,#141416_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none" />
             
             <div className="w-full max-w-sm space-y-4 relative z-10">
-              {/* Terminal Title */}
               <div className="flex items-center justify-between text-[10px] tracking-widest text-zinc-600 font-bold border-b border-zinc-900 pb-2">
                 <span className="flex items-center gap-2"><Terminal size={12} className="text-emerald-500 animate-pulse" /> VRM_OS // BOOT_LOADER</span>
                 <span>V2.6.0</span>
               </div>
 
-              {/* Status Display Code Output */}
               <div className="h-8 text-left">
                 <p className="text-[10px] tracking-wide text-zinc-400 font-bold uppercase truncate animate-pulse">
                   {bootLog}
                 </p>
               </div>
 
-              {/* Minimal Progress Track Line */}
               <div className="h-[2px] w-full bg-zinc-900 overflow-hidden relative rounded-full">
                 <motion.div 
                   className="h-full bg-emerald-500 shadow-[0_0_8px_#10b981]" 
@@ -109,7 +101,6 @@ export default function Home() {
                 />
               </div>
 
-              {/* Bottom Telemetry Counter Percentage */}
               <div className="flex justify-between items-center text-[9px] tracking-[0.2em] text-zinc-500">
                 <span>STATUS // LOADING</span>
                 <span className="font-bold text-emerald-400 tabular-nums">{Math.min(loadingProgress, 100)}%</span>
@@ -119,7 +110,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* GLOBAL DYNAMIC POINTER LAYER */}
+      {/* SINGLE CUSTOM CIRCLE CURSOR */}
       <div 
         style={{
           position: 'fixed',
@@ -138,14 +129,12 @@ export default function Home() {
         }}
       />
 
-      {/* READING PROGRESS MATRIX */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 via-zinc-500 to-blue-500 transform-origin-0 z-50" style={{ scaleX }} />
 
-      {/* STRUCTURAL GRID BACKGROUND & VIGNETTE */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#141416_1px,transparent_1px),linear-gradient(to_bottom,#141416_1px,transparent_1px)] bg-[size:5rem_5rem] pointer-events-none z-0" />
       <div className="fixed inset-0 bg-radial-gradient from-transparent via-[#050505]/60 to-[#050505] pointer-events-none z-0" />
 
-      {/* MAIN WEBSITE ARCHITECTURE WRAPPER */}
+      {/* PORTFOLIO CONTENT LAYER */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={!loading ? { opacity: 1, y: 0 } : {}}
@@ -296,7 +285,7 @@ export default function Home() {
                   </div>
                   <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
                     <a href="https://github.com/Mounish1808" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37(3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     </a>
                     <a href="#" className="hover:text-white transition-colors"><ExternalLink size={14} /></a>
                   </div>
@@ -328,7 +317,7 @@ export default function Home() {
                   </div>
                   <div className="flex gap-4 text-zinc-600 group-hover:text-zinc-400 transition-colors">
                     <a href="https://github.com/Mounish1808/Student-Management-System" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37(3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                      <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     </a>
                     <a href="https://github.com/Mounish1808/Student-Management-System" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                       <ExternalLink size={14} />
